@@ -9,11 +9,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
-const pages = ['Pagina1', 'Pagina2', 'Pagina3'];
+const pages = ['Detail', 'Pagina2', 'Pagina3'];
 
 const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState<any>(null);
 
   const handleOpenNavMenu = (event: any) => {
     setAnchorElNav(event.currentTarget);
@@ -81,7 +82,9 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
+                  <Typography textAlign='center'>
+                    <Link to={`/${page}`}>{page}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -112,14 +115,10 @@ const Navbar = () => {
               columnGap: 2,
             }}
           >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+            {pages.map((page, i) => (
+              <MenuItem key={i} onClick={handleCloseNavMenu}>
+                <Link to={`/${page}`}>{page}</Link>
+              </MenuItem>
             ))}
           </Box>
         </Toolbar>
