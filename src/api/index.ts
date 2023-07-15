@@ -19,5 +19,16 @@ export const getAllPokemons = async () => {
     const data: any = await (res.json())
 
     return data
+}
 
+export const getPokemonById = async (id: number) => {
+    if (id < 0) {
+        return null
+    }
+
+    const res = await fetch(`${BASE_URL}/pokemon/${id}`)
+
+    const data: any = (await res.json())
+
+    return data
 }

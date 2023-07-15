@@ -17,16 +17,17 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 const HomePage = () => {
   //STATES
-  const [pokemons, setPokemons] = useState<PokemonsType[]>([]);
+  // const [pokemons, setPokemons] = useState<PokemonsType[]>([]);
   const [pokemon, setPokemon] = useState<any>([]);
   const [currentSearch, setCurrentSearch] = useSearchParams();
 
   // SEARCH ALL ITEMS (LIST)
-  const handleOnClick = () => {
-    getAllPokemons().then((res) => {
-      setPokemons(res.results);
-    });
-  };
+  // const handleOnClick = () => {
+  //   getAllPokemons().then((res) => {
+  //     setPokemons(res.results);
+  //     console.log('res', res);
+  //   });
+  // };
 
   //SEARCH SPECIFIC ITEM
   const handleOnSearch = useCallback(() => {
@@ -34,10 +35,6 @@ const HomePage = () => {
       setPokemon(res);
     });
   }, [currentSearch]);
-
-  useEffect(() => {
-    console.log('pokemon name', pokemon);
-  }, [pokemon]);
 
   //SEARCH ON INPUT CHANGE
   const handleOnSearchChange = useCallback(
@@ -58,7 +55,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Grid container>
+      {/* <Grid container>
         <Grid item xs={12}>
           <Typography
             variant='h2'
@@ -91,11 +88,13 @@ const HomePage = () => {
               <Typography>name : {p.name}</Typography>
             </CardContent>
             <CardActions>
-              <Button size='small'>Dettaglio</Button>
+              <Link to={p.id}>
+                <Button size='small'>Dettaglio</Button>
+              </Link>
             </CardActions>
           </Card>
         ))}
-      </Grid>
+      </Grid> */}
 
       <Grid container>
         <Grid item xs={12}>
@@ -151,7 +150,7 @@ const HomePage = () => {
           }}
         >
           {!!pokemon.name ? (
-            <Card sx={{ minWidth: 275 }}>
+            <Card key={pokemon.id} sx={{ minWidth: 275 }}>
               <CardContent>
                 <Typography
                   sx={{
@@ -173,7 +172,9 @@ const HomePage = () => {
                 ))}
               </CardContent>
               <CardActions>
-                <Button size='small'>Dettaglio</Button>
+                <Link to={pokemon.id.toString()}>
+                  <Button size='small'>Dettaglio</Button>
+                </Link>
               </CardActions>
             </Card>
           ) : (
