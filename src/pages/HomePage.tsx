@@ -164,12 +164,12 @@ const HomePage = () => {
                 >
                   {pokemon.name}
                 </Typography>
-                Ability:{' '}
-                {pokemon.abilities.map((a: any) => (
-                  <ul>
-                    <li>{a.ability.name}</li>
-                  </ul>
-                ))}
+                <Typography>
+                  <span style={{ fontWeight: 'bold', fontSize: '14px' }}>
+                    Base Experience :
+                  </span>{' '}
+                  {pokemon.base_experience}
+                </Typography>
               </CardContent>
               <CardActions>
                 <Link to={pokemon.id.toString()}>
