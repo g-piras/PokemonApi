@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
-const pages = ['Detail', 'Pagina2', 'Pagina3'];
+const pages = ['Pagina1', 'Pagina2'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<any>(null);

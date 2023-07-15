@@ -105,12 +105,24 @@ const HomePage = () => {
             Search for a specific item
           </Typography>
         </Grid>
-        <Grid item xs={12} style={{ padding: '2em' }}>
+        <Grid
+          container
+          item
+          xs={12}
+          sx={{
+            padding: '2em',
+            justifyContent: 'center',
+          }}
+        >
           <Paper
             component='form'
-            style={{ padding: '2em' }}
             autoComplete='off'
-            sx={{ display: 'flex', alignItems: 'baseline' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'center',
+              padding: '2em',
+            }}
             onSubmit={(e) => {
               e.preventDefault();
             }}
@@ -147,36 +159,40 @@ const HomePage = () => {
             display: 'flex',
             alignItems: 'center',
             padding: '2em',
+            margin: '40px',
+            columnGap: '40px',
           }}
         >
           {!!pokemon.name ? (
-            <Card key={pokemon.id} sx={{ minWidth: 275 }}>
-              <CardContent>
-                <Typography
-                  sx={{
-                    fontSize: 18,
-                    textTransform: 'uppercase',
-                    fontWeight: 'bold',
-                    marginBottom: '30px',
-                  }}
-                  color='text.secondary'
-                  gutterBottom
-                >
-                  {pokemon.name}
-                </Typography>
-                <Typography>
-                  <span style={{ fontWeight: 'bold', fontSize: '14px' }}>
-                    Base Experience :
-                  </span>{' '}
-                  {pokemon.base_experience}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Link to={pokemon.id.toString()}>
-                  <Button size='small'>Dettaglio</Button>
-                </Link>
-              </CardActions>
-            </Card>
+            <>
+              <Card key={pokemon.id} sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography
+                    sx={{
+                      fontSize: 18,
+                      textTransform: 'uppercase',
+                      fontWeight: 'bold',
+                      marginBottom: '30px',
+                    }}
+                    color='text.secondary'
+                    gutterBottom
+                  >
+                    {pokemon.name}
+                  </Typography>
+                  <Typography>
+                    <span style={{ fontWeight: 'bold', fontSize: '14px' }}>
+                      Base Experience :
+                    </span>{' '}
+                    {pokemon.base_experience}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Link to={pokemon.id.toString()}>
+                    <Button size='small'>Dettaglio</Button>
+                  </Link>
+                </CardActions>
+              </Card>
+            </>
           ) : (
             ''
           )}
