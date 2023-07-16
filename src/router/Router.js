@@ -11,7 +11,6 @@ const Router = () => {
 
       {/* DETAIL */}
       <Route path='/:pokemonId' element={<DetailPage />} />
-      {/* <Route path='/yachts/:id' element={<YachtDetailPage />} /> */}
 
       {/* NotFound */}
       {/* <Route path='*' element={<NotFoundPage />} /> */}

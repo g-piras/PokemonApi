@@ -1,14 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAllPokemons, getPokemonById, getPokemonBySearch } from '../api';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { getPokemonById } from '../api';
+import { Box, Button } from '@mui/material';
+import PokemonCardDetail from '../components/PokemonCardDetail';
 
 const DetailPage = () => {
   const { pokemonId } = useParams();
@@ -34,46 +28,7 @@ const DetailPage = () => {
     <>
       {!!pokemonDetail ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-          <Card
-            sx={{
-              width: '400px',
-              height: '100%',
-              justifyContent: 'center',
-              alignItem: 'center',
-              margin: '2em',
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{
-                  fontSize: 18,
-                  textTransform: 'uppercase',
-                  fontWeight: 'bold',
-                  marginBottom: '30px',
-                  textAlign: 'center',
-                }}
-                color='text.secondary'
-                gutterBottom
-              >
-                {pokemonDetail?.name}
-              </Typography>
-              <span style={{ fontWeight: 'bold' }}>Ability:</span>{' '}
-              {pokemonDetail.abilities.map((a: any) => (
-                <ul>
-                  <li style={{ listStyle: 'none' }}>- {a.ability.name}</li>
-                </ul>
-              ))}
-              <span style={{ fontWeight: 'bold' }}>Stats:</span>{' '}
-              {pokemonDetail.stats.map((s: any) => (
-                <ul>
-                  <li style={{ listStyle: 'none' }}>
-                    <span style={{ fontWeight: 'bold' }}>{s.stat.name}</span> :{' '}
-                    {s.base_stat}
-                  </li>
-                </ul>
-              ))}
-            </CardContent>
-          </Card>
+          <PokemonCardDetail pokemonDetail={pokemonDetail} />
         </Box>
       ) : (
         'Loading..'

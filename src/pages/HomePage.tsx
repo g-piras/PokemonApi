@@ -6,14 +6,12 @@ import {
   Paper,
   Typography,
   Box,
-  Card,
-  CardContent,
-  CardActions,
 } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { getAllPokemons, getPokemonBySearch } from '../api';
 import { PokemonsType } from '../models/page_one/PokemonsType';
 import { Link, useSearchParams } from 'react-router-dom';
+import PokemonCardHomepage from '../components/PokemonCardHomepage';
 
 const HomePage = () => {
   //STATES
@@ -165,33 +163,7 @@ const HomePage = () => {
         >
           {!!pokemon.name ? (
             <>
-              <Card key={pokemon.id} sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Typography
-                    sx={{
-                      fontSize: 18,
-                      textTransform: 'uppercase',
-                      fontWeight: 'bold',
-                      marginBottom: '30px',
-                    }}
-                    color='text.secondary'
-                    gutterBottom
-                  >
-                    {pokemon.name}
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontWeight: 'bold', fontSize: '14px' }}>
-                      Base Experience :
-                    </span>{' '}
-                    {pokemon.base_experience}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Link to={pokemon.id.toString()}>
-                    <Button size='small'>Dettaglio</Button>
-                  </Link>
-                </CardActions>
-              </Card>
+              <PokemonCardHomepage pokemon={pokemon} />
             </>
           ) : (
             ''
